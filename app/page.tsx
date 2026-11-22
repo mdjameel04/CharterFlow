@@ -5,6 +5,10 @@ import PowefulFeatuers from './components/PowerfulFeatuers'
 import Pricing from './components/Pricing'
 import FAQ from './components/FAQ'
 import Footer from './components/Footer'
+import FinalCTA from './components/FinalCTA'
+import Integrations from './components/Integrations'
+import Testimonials from './components/Testimonials'
+import WhyCharterFlow from './components/WhyChaterflow'
 
 function page() {
   return (
@@ -12,8 +16,12 @@ function page() {
       <Navbar/>
       <HeroSection/>
       <PowefulFeatuers/>
-      <FAQ/>
+      <WhyCharterFlow/>
+      <Testimonials/>
       <Pricing/>
+      <Integrations/>
+      <FAQ/>
+      <FinalCTA/>
       <Footer/>
     </div>
   )
