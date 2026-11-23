@@ -85,7 +85,7 @@ function FeatureCard({ icon: Icon, title, description, image }: Feature) {
       {/* IMAGE: right side, fades into the card from the left */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-y-0 right-0 w-[48%] opacity-60 transition-transform duration-500 [mask-image:linear-gradient(to_right,transparent_0%,black_55%)] [-webkit-mask-image:linear-gradient(to_right,transparent_0%,black_55%)] group-hover:scale-105 sm:opacity-100"
+        className=" absolute inset-y-0 right-0 w-[48%] opacity-60 transition-transform duration-500 [mask-image:linear-gradient(to_right,transparent_0%,black_55%)] [-webkit-mask-image:linear-gradient(to_right,transparent_0%,black_55%)] group-hover:scale-105 sm:opacity-100"
       >
         <Image
           src={image}

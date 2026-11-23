@@ -6,7 +6,7 @@ import { stats } from "../data";
 
 export default function StatCards() {
   return (
-    <div className="grid grid-cols-4 gap-2">
+    <div className="grid grid-cols-4 gap-2 select-text">
       {stats.map((s) => (
         <div
           key={s.label}

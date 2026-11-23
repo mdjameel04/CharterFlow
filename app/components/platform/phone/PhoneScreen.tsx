@@ -5,7 +5,7 @@ import { phoneScreen } from '../data';
 
 function PhoneScreen() {
   return (
-    <div className='relative flex h-full w-full flex-col bg-gradient-to-b from-white to-[#e9f4f6] text-[#0b2338] ' >
+    <div className='relative flex h-full w-full flex-col select-text bg-gradient-to-b from-white to-[#e9f4f6] text-[#0b2338] ' >
       {/* background image */}
       <div className='relative h-[150px] w-full shrink-0  ' >
          <Image 

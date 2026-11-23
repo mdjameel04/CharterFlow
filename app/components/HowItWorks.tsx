@@ -81,11 +81,13 @@ export default function HowItWorks() {
       mm.add(
         {
           desktop: "(min-width: 1024px)",
+          mobile: "(max-width: 1023px)",
           reduce: "(prefers-reduced-motion: reduce)",
         },
         (ctx) => {
           const { desktop, reduce } = ctx.conditions as {
             desktop: boolean;
+            mobile: boolean;
             reduce: boolean;
           };
 
@@ -252,11 +254,11 @@ export default function HowItWorks() {
           {/* Connector: mobile = vertical (left), desktop = horizontal (icon level) */}
           <span
             aria-hidden="true"
-            className="hiw-track pointer-events-none absolute bottom-11 left-[43px] top-11 w-0.5 rounded-full bg-[#d5e4ea] opacity-0 lg:bottom-auto lg:left-[calc((100%-6rem)/10)] lg:right-[calc((100%-6rem)/10)] lg:top-[43px] lg:h-0.5 lg:w-auto"
+            className="hiw-track  absolute bottom-11 left-[43px] top-11 w-0.5 rounded-full bg-[#d5e4ea] opacity-0 lg:bottom-auto lg:left-[calc((100%-6rem)/10)] lg:right-[calc((100%-6rem)/10)] lg:top-[43px] lg:h-0.5 lg:w-auto"
           />
           <span
             aria-hidden="true"
-            className="hiw-track-fill pointer-events-none absolute bottom-11 left-[43px] top-11 w-0.5 rounded-full bg-gradient-to-b from-sky-400 via-amber-400 to-rose-400 opacity-0 lg:bottom-auto lg:left-[calc((100%-6rem)/10)] lg:right-[calc((100%-6rem)/10)] lg:top-[43px] lg:h-0.5 lg:w-auto lg:bg-gradient-to-r"
+            className="hiw-track-fill  absolute bottom-11 left-[43px] top-11 w-0.5 rounded-full bg-gradient-to-b from-sky-400 via-amber-400 to-rose-400 opacity-0 lg:bottom-auto lg:left-[calc((100%-6rem)/10)] lg:right-[calc((100%-6rem)/10)] lg:top-[43px] lg:h-0.5 lg:w-auto lg:bg-gradient-to-r"
           />
 
           {steps.map((s) => (
