@@ -9,6 +9,7 @@ import FinalCTA from './components/FinalCTA'
 import Integrations from './components/Integrations'
 import Testimonials from './components/Testimonials'
 import WhyCharterFlow from './components/WhyChaterflow'
+import HowItWorks from './components/HowItWorks'
 
 function page() {
   return (
@@ -16,6 +17,7 @@ function page() {
       <Navbar/>
       <HeroSection/>
       <PowefulFeatuers/>
+      <HowItWorks/>
       <WhyCharterFlow/>
       <Testimonials/>
       <Pricing/>

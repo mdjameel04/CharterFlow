@@ -1,16 +1,13 @@
-
 "use client";
 
 import { useState } from "react";
 import {
   ArrowRight,
-  ChevronDown,
-  Headphones,
   Mail,
   MessageCircle,
+  Minus,
   Phone,
   Plus,
-  Minus,
   type LucideIcon,
 } from "lucide-react";
 
@@ -22,9 +19,9 @@ type FAQItem = {
 type ContactItem = {
   icon: LucideIcon;
   title: string;
-  description: string;
+  line: string;
+  sub?: string;
   href?: string;
-  detail?: string;
 };
 
 const faqs: FAQItem[] = [
@@ -55,229 +52,166 @@ const faqs: FAQItem[] = [
   },
 ];
 
+// How many questions show in this compact section (rest live on /faq)
+const VISIBLE_FAQS = 3;
+
 const contacts: ContactItem[] = [
   {
     icon: MessageCircle,
     title: "Live Chat",
-    description: "Chat with our support team",
+    line: "Get instant help",
+    href: "#contact",
   },
   {
     icon: Mail,
     title: "Email Support",
-    description: "Contact our team by email",
+    line: "support@charterflow.com",
+    href: "mailto:support@charterflow.com",
   },
   {
     icon: Phone,
-    title: "Phone Support",
-    description: "Speak with our team",
-    detail: "Available during support hours",
+    title: "Call Us",
+    line: "+1 (800) 672-4367",
+    sub: "Mon – Fri, 9 AM – 6 PM ET",
+    href: "tel:+18006724367",
   },
 ];
 
 export default function FAQ() {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
     <section
       id="faq"
-      className="relative overflow-hidden bg-[#f5f9fb] px-5 py-20 sm:px-8 lg:py-28"
+      className="relative overflow-hidden bg-[#f5f9fb] px-5 py-10 sm:px-8"
     >
       {/* Decorative background */}
       <div className="pointer-events-none absolute -left-40 top-0 size-[400px] rounded-full bg-[#d9f1ee]/40 blur-[100px]" />
 
-      <div className="relative mx-auto max-w-7xl">
+      <div className="relative mx-auto grid max-w-7xl items-center gap-8 lg:grid-cols-[230px_minmax(0,1fr)_minmax(0,1.05fr)] lg:gap-8">
+        {/* COL 1: HEADING */}
+        <div>
+          <p className="text-[11px] font-bold uppercase tracking-[0.06em] text-[#087e78]">
+            FAQ
+          </p>
 
-        {/* SECTION HEADING */}
-        <div className="mb-14 max-w-2xl">
-          <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-[#b9ded9] bg-white/80 px-4 py-2">
-            <Headphones size={15} className="text-[#079b91]" />
-
-            <span className="text-[10px] font-bold uppercase tracking-[0.17em] text-[#087e78]">
-              Help & Support
-            </span>
-          </div>
-
-          <h2 className="font-heading text-4xl font-bold leading-[1.1] tracking-tight text-[#0b2338] sm:text-5xl lg:text-6xl">
-            Questions?
-            <span className="block italic text-[#078f83]">
-              We've got answers.
-            </span>
+          <h2 className="mt-2 text-[26px] font-extrabold leading-[1.1] tracking-tight text-[#0b2338]">
+            Frequently
+            <br />
+            Asked Questions.
           </h2>
 
-          <p className="mt-5 max-w-lg text-sm leading-7 text-[#647887] sm:text-base">
-            Everything you need to know about CharterFlow,
-            from getting started to growing your charter business.
-          </p>
+          <a
+            href="/faq"
+            className="group mt-4 inline-flex items-center gap-2 rounded-full border border-[#0b716b]/40 bg-white/80 px-4 py-2 text-xs font-bold text-[#0b716b] transition hover:border-[#0b716b] hover:bg-[#e3f4f1] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0b716b]"
+          >
+            View All FAQs
+            <ArrowRight
+              size={14}
+              className="transition-transform group-hover:translate-x-1"
+            />
+          </a>
         </div>
 
-        {/* CONTENT GRID */}
-        <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,1.5fr)_minmax(320px,1fr)] lg:gap-12">
+        {/* COL 2: ACCORDION */}
+        <div className="space-y-2.5">
+          {faqs.slice(0, VISIBLE_FAQS).map((faq, index) => {
+            const isOpen = openIndex === index;
 
-          {/* FAQ ACCORDION */}
-          <div className="space-y-3">
-            {faqs.map((faq, index) => {
-              const isOpen = openIndex === index;
-
-              return (
-                <article
-                  key={faq.question}
-                  className={`overflow-hidden rounded-2xl border transition-all duration-300 ${
-                    isOpen
-                      ? "border-[#a8d9d2] bg-white shadow-[0_12px_35px_rgba(11,35,56,0.07)]"
-                      : "border-[#e0ebee] bg-white/80 hover:border-[#b9ded9]"
-                  }`}
-                >
-                  <h3>
-                    <button
-                      type="button"
-                      aria-expanded={isOpen}
-                      aria-controls={`faq-panel-${index}`}
-                      onClick={() =>
-                        setOpenIndex(isOpen ? null : index)
-                      }
-                      className="flex w-full items-center justify-between gap-5 px-5 py-5 text-left sm:px-6"
-                    >
-                      <span
-                        className={`text-sm font-bold leading-relaxed sm:text-[15px] ${
-                          isOpen
-                            ? "text-[#087e78]"
-                            : "text-[#0b2338]"
-                        }`}
-                      >
-                        {faq.question}
-                      </span>
-
-                      <span
-                        className={`flex size-8 shrink-0 items-center justify-center rounded-full transition-all duration-300 ${
-                          isOpen
-                            ? "bg-[#078f83] text-white"
-                            : "bg-[#e9f5f2] text-[#078f83]"
-                        }`}
-                      >
-                        {isOpen ? (
-                          <Minus size={16} />
-                        ) : (
-                          <Plus size={16} />
-                        )}
-                      </span>
-                    </button>
-                  </h3>
-
-                  <div
-                    id={`faq-panel-${index}`}
-                    role="region"
-                    hidden={!isOpen}
+            return (
+              <article
+                key={faq.question}
+                className={`overflow-hidden rounded-xl border backdrop-blur-lg transition-all duration-300 ${
+                  isOpen
+                    ? "border-[#a8d9d2] bg-white shadow-[0_12px_35px_rgba(11,35,56,0.07)]"
+                    : "border-white bg-white/80 shadow-[0_6px_20px_rgba(11,35,56,0.05)] hover:border-[#b9ded9]"
+                }`}
+              >
+                <h3>
+                  <button
+                    type="button"
+                    aria-expanded={isOpen}
+                    aria-controls={`faq-panel-${index}`}
+                    onClick={() => setOpenIndex(isOpen ? null : index)}
+                    className="flex w-full items-center justify-between gap-4 px-4 py-3 text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#0b716b]"
                   >
-                    <div className="px-5 pb-6 sm:px-6">
-                      <div className="mb-4 h-px bg-[#e6eff1]" />
+                    <span
+                      className={`text-[13px] font-semibold leading-snug ${
+                        isOpen ? "text-[#087e78]" : "text-[#0b2338]"
+                      }`}
+                    >
+                      {faq.question}
+                    </span>
 
-                      <p className="max-w-xl text-[13px] leading-7 text-[#647887] sm:text-sm">
-                        {faq.answer}
-                      </p>
-                    </div>
-                  </div>
-                </article>
-              );
-            })}
+                    {isOpen ? (
+                      <Minus size={16} className="shrink-0 text-[#078f83]" />
+                    ) : (
+                      <Plus size={16} className="shrink-0 text-[#0b2338]" />
+                    )}
+                  </button>
+                </h3>
 
-            <a
-              href="#contact"
-              className="group mt-7 inline-flex items-center gap-2 text-sm font-bold text-[#087e78] transition-colors hover:text-[#065e59]"
-            >
-              Still have questions? Contact us
-              <ArrowRight
-                size={17}
-                className="transition-transform group-hover:translate-x-1"
-              />
-            </a>
+                <div id={`faq-panel-${index}`} role="region" hidden={!isOpen}>
+                  <p className="px-4 pb-4 text-[12.5px] leading-relaxed text-[#647887]">
+                    {faq.answer}
+                  </p>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+
+        {/* COL 3: SUPPORT & CONTACT */}
+        <div className="grid items-center gap-5 border-t border-[#0b2338]/15 pt-6 sm:grid-cols-2 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
+          <div>
+            <p className="text-[11px] font-bold uppercase tracking-[0.06em] text-[#087e78]">
+              Support &amp; Contact
+            </p>
+
+            <h3 className="mt-2 text-[24px] font-extrabold leading-[1.1] tracking-tight text-[#0b2338]">
+              Need Help?
+              <br />
+              We’re Here for You.
+            </h3>
+
+            <p className="mt-2 text-[12px] leading-relaxed text-[#647887]">
+              Get support, ask questions, or talk to our team about your
+              business needs.
+            </p>
           </div>
 
-          {/* SUPPORT CARD */}
-          <aside className="relative overflow-hidden rounded-[28px] bg-gradient-to-br from-[#124e50] via-[#0d4146] to-[#092f3b] p-7 text-white shadow-[0_25px_60px_rgba(9,60,66,0.15)] sm:p-9">
+          <ul className="space-y-2">
+            {contacts.map((c) => {
+              const Icon = c.icon;
 
-            {/* Decorative circles */}
-            <div className="pointer-events-none absolute -right-24 -top-24 size-64 rounded-full border border-white/10" />
-            <div className="pointer-events-none absolute -right-12 -top-12 size-44 rounded-full border border-white/10" />
+              return (
+                <li key={c.title}>
+                  <a
+                    href={c.href}
+                    className="group flex items-center gap-3 rounded-xl border border-white bg-white/85 px-3.5 py-2.5 shadow-[0_6px_20px_rgba(11,35,56,0.06)] backdrop-blur-lg transition hover:border-[#b9ded9] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#0b716b]"
+                  >
+                    <Icon
+                      size={20}
+                      strokeWidth={1.8}
+                      className="shrink-0 text-[#078f83]"
+                    />
 
-            <div className="relative">
-              <div className="mb-6 flex size-12 items-center justify-center rounded-2xl bg-white/10">
-                <Headphones size={24} className="text-[#65dfc0]" />
-              </div>
-
-              <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#65dfc0]">
-                Support & Contact
-              </p>
-
-              <h3 className="mt-3 max-w-xs font-heading text-3xl font-bold leading-tight tracking-tight sm:text-4xl">
-                Need a hand?
-                <span className="block italic text-[#65dfc0]">
-                  We're here to help.
-                </span>
-              </h3>
-
-              <p className="mt-4 max-w-sm text-sm leading-7 text-white/65">
-                Have a question about your charter business?
-                Reach out to our team and we'll help you find
-                the right solution.
-              </p>
-
-              {/* CONTACT OPTIONS */}
-              <div className="mt-8 space-y-3">
-                {contacts.map((contact) => {
-                  const Icon = contact.icon;
-
-                  return (
-                    <div
-                      key={contact.title}
-                      className="group flex items-center gap-4 rounded-2xl border border-white/10 bg-white/5 p-4 transition-all duration-300 hover:border-white/20 hover:bg-white/10"
-                    >
-                      <div className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-white/10 text-[#65dfc0]">
-                        <Icon size={20} strokeWidth={1.8} />
-                      </div>
-
-                      <div className="min-w-0 flex-1">
-                        <p className="text-sm font-bold text-white">
-                          {contact.title}
-                        </p>
-
-                        <p className="mt-1 text-xs text-white/60">
-                          {contact.description}
-                        </p>
-
-                        {contact.detail && (
-                          <p className="mt-1 text-[11px] text-white/45">
-                            {contact.detail}
-                          </p>
-                        )}
-                      </div>
-
-                      <ArrowRight
-                        size={16}
-                        className="shrink-0 text-white/40 transition-transform duration-300 group-hover:translate-x-1"
-                      />
+                    <div className="min-w-0 leading-tight">
+                      <p className="text-[12px] font-bold text-[#0b2338]">
+                        {c.title}
+                      </p>
+                      <p className="truncate text-[11px] text-[#647887]">
+                        {c.line}
+                      </p>
+                      {c.sub && (
+                        <p className="text-[10px] text-[#81929c]">{c.sub}</p>
+                      )}
                     </div>
-                  );
-                })}
-              </div>
-
-              {/* CONTACT CTA */}
-              <a
-                href="#contact"
-                className="group mt-7 flex w-full items-center justify-center gap-2 rounded-full bg-[#27c99b] px-6 py-4 text-sm font-bold text-[#073b39] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#51dfb7]"
-              >
-                Get in Touch
-
-                <ArrowRight
-                  size={17}
-                  className="transition-transform duration-300 group-hover:translate-x-1"
-                />
-              </a>
-
-              <p className="mt-4 text-center text-[11px] text-white/45">
-                We're happy to answer your questions.
-              </p>
-            </div>
-          </aside>
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
         </div>
       </div>
     </section>
