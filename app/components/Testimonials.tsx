@@ -17,19 +17,19 @@ const testimonials: Testimonial[] = [
       "CharterFlow increased our bookings by 42% in just 2 months. It's simple, fast, and saves us hours every week.",
     name: "Captain Mike R.",
     company: "Coastal Charter Co.",
-    avatar: "/avatars/mike.jpg",
+    avatar: "/img2.jpg",
   },
   {
     quote: "The booking system is super simple, and our guests love it.",
     name: "Sarah N.",
     company: "Reel Time Charters",
-    avatar: "/avatars/sarah.jpg",
+    avatar: "/img3.png",
   },
   {
     quote: "It keeps my boats, crew, and bookings organized in one place.",
     name: "Jake M.",
     company: "Gulf Coast Charters",
-    avatar: "/avatars/jake.jpg",
+    avatar: "/img1.png",
   },
 ];
 

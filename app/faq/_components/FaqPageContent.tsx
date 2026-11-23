@@ -162,8 +162,7 @@ export default function FaqPageContent() {
     return map;
   }, []);
 
-  const results = useMemo(
-    () =>
+  const results = useMemo(() =>
       faqs
         .map((f, id) => ({ ...f, id }))
         .filter((f) => {
@@ -175,7 +174,7 @@ export default function FaqPageContent() {
           }
           return active === "all" || f.category === active;
         }),
-    [q, searching, active]
+    [q, searching, active],
   );
 
   const selectCategory = (c: string) => {
@@ -187,16 +186,20 @@ export default function FaqPageContent() {
   const heading = searching
     ? `Results for “${query.trim()}”`
     : active === "all"
-    ? "All Questions"
-    : active;
+      ? "All Questions"
+      : active;
 
   return (
     <main className="bg-[#f5f9fb]">
       {/* ───────── HERO ───────── */}
-      <section className="relative overflow-hidden px-5 pb-10 pt-16 sm:px-8 sm:pt-20">
-        <div className="pointer-events-none absolute -right-40 -top-20 size-[420px] rounded-full bg-[#d9f1ee]/60 blur-[100px]" />
+<section className="relative isolate overflow-hidden px-5 pb-10 pt-16 sm:px-8 sm:pt-20">        <div className="pointer-events-none absolute -right-40 -top-20 size-[420px] rounded-full bg-[#d9f1ee]/60 blur-[100px]" />
         <div className="pointer-events-none absolute -left-40 top-10 size-[380px] rounded-full bg-[#e0f0f7]/70 blur-[100px]" />
-
+            <div
+  aria-hidden="true"
+  className="pointer-events-none absolute inset-0 -z-10 hidden bg-cover bg-center opacity-60 sm:block"
+  style={{ backgroundImage: "url('/faq-hero.png')" }}
+/>
+<div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent to-[#f5f9fb]" />
         <div className="relative mx-auto max-w-3xl text-center">
           <p className="text-[11px] font-bold uppercase tracking-[0.06em] text-[#087e78]">
             Help Center
@@ -241,7 +244,10 @@ export default function FaqPageContent() {
       <section className="px-5 pb-16 sm:px-8">
         <div className="mx-auto grid max-w-6xl gap-6 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-10">
           {/* Categories */}
-          <nav aria-label="FAQ categories" className="lg:sticky lg:top-24 lg:self-start">
+          <nav
+            aria-label="FAQ categories"
+            className="lg:sticky lg:top-24 lg:self-start"
+          >
             <ul className="-mx-5 flex gap-2 overflow-x-auto px-5 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden lg:mx-0 lg:flex-col lg:gap-1 lg:overflow-visible lg:px-0 lg:pb-0">
               {["all", ...categories].map((c) => {
                 const isActive = !searching && active === c;
@@ -333,7 +339,11 @@ export default function FaqPageContent() {
                         </button>
                       </h3>
 
-                      <div id={`faq-panel-${f.id}`} role="region" hidden={!isOpen}>
+                      <div
+                        id={`faq-panel-${f.id}`}
+                        role="region"
+                        hidden={!isOpen}
+                      >
                         <div className="px-5 pb-5 sm:px-6">
                           <div className="mb-3 h-px bg-[#e6eff1]" />
                           <p className="max-w-2xl text-[13px] leading-7 text-[#647887] sm:text-sm">
@@ -347,7 +357,10 @@ export default function FaqPageContent() {
               </div>
             ) : (
               <div className="mt-6 rounded-2xl border border-white bg-white/80 px-6 py-12 text-center shadow-sm">
-                <SearchX className="mx-auto size-9 text-[#81929c]" strokeWidth={1.5} />
+                <SearchX
+                  className="mx-auto size-9 text-[#81929c]"
+                  strokeWidth={1.5}
+                />
                 <p className="mt-3 text-sm font-bold text-[#0b2338]">
                   No answers found
                 </p>
