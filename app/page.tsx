@@ -10,6 +10,7 @@ import Integrations from './components/Integrations'
 import Testimonials from './components/Testimonials'
 import WhyCharterFlow from './components/WhyChaterflow'
 import HowItWorks from './components/HowItWorks'
+import PlatformSection from './components/platform/PlatformSection'
 
 function page() {
   return (
@@ -17,6 +18,7 @@ function page() {
       <Navbar/>
       <HeroSection/>
       {/* <PowefulFeatuers/> */}
+      <PlatformSection/> 
       <HowItWorks/>
       <WhyCharterFlow/>
       <Testimonials/>
