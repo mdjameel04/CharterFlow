@@ -71,7 +71,7 @@ export default function WhyCharterFlow() {
     <section
       ref={root}
       id="why-charterflow"
-      className="relative overflow-hidden bg-[#06222b] text-white md:h-[75vh]"
+      className="relative overflow-hidden bg-[#06222b] text-white md:h-screen"
     >
       <WaveMaskDef />
 

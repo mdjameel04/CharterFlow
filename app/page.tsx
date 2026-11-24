@@ -10,7 +10,7 @@ import Integrations from './components/Integrations'
 import Testimonials from './components/Testimonials'
 import HowItWorks from './components/HowItWorks'
 import PlatformSection from './components/platform/PlatformSection'
-import WhyCharterFlow from './whyChaterFlow/whyCharterFlow'
+import WhyCharterFlow from './components/whyChaterFlow/whyCharterFlow'
 
 function page() {
   return (
