@@ -1,6 +1,6 @@
 
 import type { Feature } from "@/app/data/data";
-import { TRACK } from "@/app/data/route";
+import { TRACK } from "@/app/data/routeConfig";
 import { MOCKUPS } from "../mockups/Mockups";
 
 type PortProps = {

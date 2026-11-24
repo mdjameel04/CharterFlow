@@ -5,7 +5,7 @@ import { useRef } from "react";
 import type { CSSProperties } from "react";
 import { gsap, ScrollTrigger, useGSAP } from "@/lib/gsap";
 import { features } from "@/app/data/data";
-import { PORT_POINTS, TRACK } from "@/app/data/route";
+import { PORT_POINTS, TRACK } from "@/app/data/routeConfig";
 import RouteSvg from "./RouteSvg";
 import Port from "./Port";
 

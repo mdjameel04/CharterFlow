@@ -1,4 +1,4 @@
-import { ROUTE_PATH, TRACK } from "@/app/data/route";
+import { ROUTE_PATH, TRACK } from "@/app/data/routeConfig";
 import Boat from "./Boat";
 
 export default function RouteSvg() {
