@@ -17,7 +17,7 @@ function page() {
     <div>
       <Navbar/>
       <HeroSection/>
-      {/* <PowefulFeatuers/> */}
+      <PowefulFeatuers/>
       <PlatformSection/> 
       <HowItWorks/>
       <WhyCharterFlow/>

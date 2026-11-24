@@ -12,7 +12,7 @@ function LaptopFrame({children}: {children :ReactNode }) {
  <div className="relative h-full w-full overflow-hidden rounded-[10px] bg-white">
    {children}
       {/* Glass shine */}
-          <div className=" absolute inset-0 bg-gradient-to-tr from-transparent via-transparent to-white/10" />
+          <div className=" absolute pointer-events-none  inset-0 bg-gradient-to-tr from-transparent via-transparent to-white/10" />
  </div>
        </div>
 
