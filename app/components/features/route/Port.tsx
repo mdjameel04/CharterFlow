@@ -1,7 +1,7 @@
-
 import type { Feature } from "@/app/data/data";
-import { TRACK } from "@/app/data/routeConfig";
+
 import { MOCKUPS } from "../mockups/Mockups";
+import { TRACK } from "@/app/data/routeConfig";
 
 type PortProps = {
   feature: Feature;
@@ -13,44 +13,38 @@ export default function Port({ feature, index, point }: PortProps) {
   const Icon = feature.icon;
   const Mockup = MOCKUPS[feature.mockup];
 
-  // crest (upar wala point) -> content upar, trough -> content neeche
   const above = point.y < TRACK.height / 2;
 
   return (
-    <div
-      className="port absolute"
-      style={{ left: point.x, top: point.y }}
-    >
+    <div className="port absolute" style={{ left: point.x, top: point.y }}>
       <span className="port-ripple absolute -left-6 -top-6 h-12 w-12 rounded-full bg-teal-400" />
 
       <span className="port-dot absolute -left-6 -top-6 flex h-12 w-12 items-center justify-center rounded-full bg-teal-600 text-white shadow-lg ring-8 ring-teal-100">
         <Icon size={22} />
       </span>
 
-      {/* outer = position, inner = GSAP animation */}
       <div
         className={`absolute -left-[120px] w-60 text-center ${
           above ? "bottom-12" : "top-12"
         }`}
       >
         <div className="port-content relative">
-          {/* chhota stem: dot aur content ko jodta hai */}
           <span
             className={`absolute left-1/2 h-6 w-px -translate-x-1/2 bg-teal-400/60 ${
               above ? "top-full" : "bottom-full"
             }`}
           />
 
-          {/* neeche wale ports mein pehle text, phir mockup; upar wale mein pehle mockup */}
           <div className={above ? "flex flex-col-reverse" : "flex flex-col"}>
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-wider text-[color:var(--port-stage)]">
+            {/* Text card: fixed colours, background se independent */}
+            <div className="rounded-2xl bg-white/95 p-3 shadow-lg shadow-teal-950/10 ring-1 ring-teal-100 backdrop-blur">
+              <p className="text-xs font-semibold uppercase tracking-wider text-teal-600">
                 {index + 1}. {feature.stage}
               </p>
-              <h3 className="mt-1 text-lg font-semibold text-[color:var(--port-title)]">
+              <h3 className="mt-1 text-lg font-semibold leading-snug text-slate-900">
                 {feature.title}
               </h3>
-              <p className="mt-1 text-sm text-[color:var(--port-desc)]">
+              <p className="mt-1 text-sm text-slate-600">
                 {feature.description}
               </p>
             </div>

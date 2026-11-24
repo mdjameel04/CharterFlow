@@ -16,7 +16,7 @@ export default function FeaturesTimeline() {
 
         return (
           <li key={feature.id} className="relative pb-12 pl-16 last:pb-0">
-            <span className="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-full bg-teal-600 text-white ring-4 ring-teal-100">
+            <span className="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-full bg-teal-600 text-black ring-4 ring-teal-100">
               <Icon size={18} />
             </span>
 
