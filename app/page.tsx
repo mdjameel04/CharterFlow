@@ -11,6 +11,7 @@ import Testimonials from './components/Testimonials'
 import HowItWorks from './components/HowItWorks'
 import PlatformSection from './components/platform/PlatformSection'
 import WhyCharterFlow from './components/whyChaterFlow/whyCharterFlow'
+import FeaturesSsection from './components/features/FeaturesSsection'
 
 function page() {
   return (
@@ -18,6 +19,7 @@ function page() {
       <Navbar/>
       <HeroSection/>
       <PowefulFeatuers/>
+      <FeaturesSsection/>
       <PlatformSection/> 
       <HowItWorks/>
       <WhyCharterFlow/>
