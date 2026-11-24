@@ -8,9 +8,9 @@ import Footer from './components/Footer'
 import FinalCTA from './components/FinalCTA'
 import Integrations from './components/Integrations'
 import Testimonials from './components/Testimonials'
-import WhyCharterFlow from './components/WhyChaterflow'
 import HowItWorks from './components/HowItWorks'
 import PlatformSection from './components/platform/PlatformSection'
+import WhyCharterFlow from './whyChaterFlow/whyCharterFlow'
 
 function page() {
   return (
